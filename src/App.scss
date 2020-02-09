@@ -27,7 +27,17 @@
   }
 }
 
+
 h1 {
   margin: 0.5em 0;
   color: $primary-blue;
+}
+.progress-container {
+  height: 0.5em;
+  border-radius: 4px;
+  background: #a0a4a8;
+  .progress-bar {
+    height: inherit;
+    border-radius: inherit;
+  }
 }

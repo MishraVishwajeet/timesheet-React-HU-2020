@@ -1,27 +1,81 @@
 @import "../../styles/commons.scss";
-
-.task-list {
-  margin: 2em 0;
-  overflow: auto;
-  height: 100%;
+.task-card, .task-card .card-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .task-card {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+  flex-direction: column;
   padding: 1em;
-  border: 1px solid $grey-10;
+  border: 1px solid #e1e1e1;
   border-radius: 4px;
-  background: $white;
+  background: #fff;
   margin: 1em 0;
-
-  .task-title {
-    font-size: 1.5em;
-    font-weight: 700;
-  }
-
-  .task-time {
-    font-size: 1.5em;
-    font-weight: 300;
-  }
 }
+.task-card .remove-task-btn {
+  border: none;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  position: absolute;
+  right: -4%;
+  top: -10%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: #e1e1e1;
+}
+.task-list {
+  // display:  flex;
+  // flex-direction: column;
+  margin: 1em 0;
+  overflow: auto;
+  height: 100%;
+  padding: 0 0.5em;
+}
+.task-card .body-text {
+  margin: .5em 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+user agent stylesheet
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+  .task-card {
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      .task-title {
+        font-size: 1.5em;
+        font-weight: 700;
+      }
+    
+      .task-time {
+        font-size: 1.5em;
+        font-weight: 300;
+      }
+    }
+    
+    .body-text {
+      display:felx;
+      flex-direction:column;
+      // margin-top: ;
+      font-size: 1em;
+      font-weight: 200;
+    }
+  }
+  .task-card .remove-task-btn .remove-task-icon {
+    height: 1.2em;
+}
+  // button {
+  //   text-rendering: auto;
+  // }

@@ -2,12 +2,12 @@
 
 .new-entry-sheet {
   position: fixed;
-  min-height: 14em;
+  min-height: 18em; //changed from 14 to 18
   background: $white;
   bottom: 0;
   width: 100%;
   left: 0;
-  height: 25%;
+  height: 35%; //changed 25 to 35
   border: 1px solid $grey-10;
   box-shadow:
   0 0px 2.5px rgba(0, 0, 0, 0.02),
@@ -17,6 +17,20 @@
   0 0px 37.6px rgba(0, 0, 0, 0.05),
   0 0px 90px rgba(0, 0, 0, 0.07);
   border-radius: 18px 18px 0px 0px;
+}
+.sheet-footer {
+  padding: 0 1em;
+  margin: 0.5em;
+  .action-group {
+    display: flex;
+    justify-content: flex-end;
+    .btn--primary:disabled {
+      background: rgba(18,134,241,.5);
+    }
+    .btn--primary {
+      background: #1286f1;
+    }
+  }
 }
 
 .sheet-header {
@@ -44,7 +58,7 @@
   .row {
     display: flex;
     justify-content: space-between;
-
+    margin: .5em 0;
 
     .task-select {
       border: 1px solid $grey-10;
@@ -67,7 +81,7 @@
       margin-top: 0.5em;
     }
 
-    .hour-input, .minute-input {
+    .hour-input, .minute-input, .remarks-input{ //added .remarks-input
       border: 1px solid $grey-10;
       height: 2em;
       width: 3em;
@@ -80,15 +94,24 @@
     .time-indicator {
       font-weight: 500;
     }
-    
+    .remarks-field {
+      width: 90%;
+    }
+    .remarks-input-feild {
+      
+      height: 2em;
+      width: 100%
+    }
   }
 }
 
-.sheet-footer {
-  padding: 0 1em;
-  margin: 0.5em;
-  .action-group {
-    display: flex;
-    justify-content: flex-end;
-  }
+.sheet-body .row .remarks-field .remarks-input {
+  border: 1px solid #e1e1e1;
+  height: 2em;
+  width: 100%;
+  font-size: 1em;
+  padding: 0 .5em;
+  border-radius: 4px;
+  margin-top: .5em;
 }
+

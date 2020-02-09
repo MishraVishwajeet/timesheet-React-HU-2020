@@ -17,12 +17,15 @@ export interface IEntry {
     task: string;
     hours: string;
     minutes: string;
+    remark: string;
+    id: number;
 }
 
 export const NewEntrySheet: React.FC<INewEntrySheet> = (props: INewEntrySheet) => {
     const [task, setTask] = React.useState(taskTypes[0]);
     const [hours, setHours] = React.useState('');
     const [minutes, setMinutes] = React.useState('');
+    const [remark, setRemarks] = React.useState('');
 
     const onTaskChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setTask(event.target.value);
@@ -36,9 +39,16 @@ export const NewEntrySheet: React.FC<INewEntrySheet> = (props: INewEntrySheet) =
         setMinutes(event.target.value);
     };
 
+    const onRemarksChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRemarks(event.target.value);
+    }
+
     const onAddEntry = () => {
-        const entry: IEntry = { task, hours, minutes };
+        const entry: IEntry = { task, hours, minutes, remark, id : Date.now()}; 
         props.onAdd(entry);
+    };
+    const onComplete = () => {
+        return !(task && hours && minutes && remark);
     };
 
     return (
@@ -56,8 +66,8 @@ export const NewEntrySheet: React.FC<INewEntrySheet> = (props: INewEntrySheet) =
                     <label className="task-input">
                         Task Type
                         <select className="task-select" onChange={onTaskChange} value={task}>
-                            {taskTypes.map((task: string) => (
-                                <option value={task}>{task}</option>
+                            {taskTypes.map((task: string, index) => (   
+                                <option value={task} key={index}>{task}</option>
                             ))}
                         </select>
                     </label>
@@ -86,11 +96,23 @@ export const NewEntrySheet: React.FC<INewEntrySheet> = (props: INewEntrySheet) =
                             </div>
                         </div>
                     </label>
+                    
+                </div>
+                <div className="row">
+                    <label className="remarks-field">
+                        Remarks
+                        <input type="text"
+                         placeholder="Remarks" 
+                         className="remarks-input"
+                         onChange={onRemarksChange} 
+                         value={remark}
+                         />
+                    </label>
                 </div>
             </div>
             <div className="sheet-footer">
                 <div className="action-group">
-                    <Button color="primary" onClick={onAddEntry}>
+                    <Button color="primary" onClick={onAddEntry} disabled={onComplete()} className="btn btn--primary">
                         Add Entry
                     </Button>
                 </div>
